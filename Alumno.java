@@ -1,4 +1,4 @@
-public class AlumnOo{
+public class Alumno{
 	//definiendo propiedades del Alumno
 	public int NumeroCuenta;
 	public String NombreApellido;
@@ -8,7 +8,7 @@ public class AlumnOo{
 
 	//Sobreescribiendo el metodo toString()
 	public String toString(){
-		return "Numero Cuenta --> "+NumeroCuenta +"ln Nombre y apellido -->"+NombreApellido+"ln Centro Universitario"+CentroUniversitario+"ln Promedio-->"+PromedioActual
+		return "Numero Cuenta --> "+NumeroCuenta +"ln Promedio-->"+PromedioActual;
 	}
 
 }
