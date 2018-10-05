@@ -1,17 +1,24 @@
 import java.util.Vector;
 public class Contenedor{
 
-	//Definiendo propiedades del contenedor
-	public Vector<String> Alumno = new Vector<String>();
-
-	public void AgregarAlumno(String alumno,int posicion){
-		Alumno.add(posicion,alumno);
+	//Definiendo contenedor de clase Alumno
+	public Alumno AlumnoContenedor[] = new Alumno[100];
+	//metodos de la clase contenedor 
+	public void AgregarAlumno(Alumno alumno,int posicion){
+		if(AlumnoContenedor[posicion]==null){
+			AlumnoContenedor[posicion]=alumno;
+		}
 	};
 	public void EliminarAlumno(int posicion){
-		Alumno.remove(posicion);
+	//	Alumno.remove(posicion);
 	};
 	public void EnlistarAlumno(){
-		Alumno.listIterator();
+		System.out.println("Numero\t\tNombre\t\tCuenta\t\t");
+		for(int x=0;x<AlumnoContenedor.length;x++){
+			if(AlumnoContenedor[x]!=null){	
+			System.out.println(x+"\t\t"+AlumnoContenedor[x].Nombre+"\t\t"+AlumnoContenedor[x].Cuenta);
+			}
+		}
 	};
 
 }
