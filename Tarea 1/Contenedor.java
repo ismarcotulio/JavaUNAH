@@ -10,7 +10,7 @@ public class Contenedor{
 		}
 	};
 	public void EliminarAlumno(int posicion){
-	//	Alumno.remove(posicion);
+		AlumnoContenedor[posicion]=null;
 	};
 	public void EnlistarAlumno(){
 		System.out.println("Numero\t\tNombre\t\tCuenta\t\t");
