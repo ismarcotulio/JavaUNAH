@@ -1,0 +1,27 @@
+1-todas las ordenes comienzan con git 
+por ejemplo:
+git clone
+
+te sirve para trabajar en equipo al mismo tiempo en diferentes lugares y guarda versiones de tu proyecto, vos podes devolver cualquier cambio mal hecho.
+
+comandos importantes:
+
+-git clone "(link de repositorio)"
+	clona el repositorio al que estas asociado o el que tenes creado
+
+-git config --global user.name "(nombre de usuario)"
+-git config --global user.email "(email de usuario)"
+	son credenciales para verificar que sos vos
+
+-git add .
+	empaqueta todo los cambios que se hallan hecho
+
+-git commit -m "(comentario)"
+	se encapsula con descripcion el paquete antes creado para poder ser enviado
+
+-git push
+	se envia a github el paquete ya listo
+
+-git pull (casi no se usa amenos que trabajes simultaneo con alguien)
+	se carga todos los archivos en tiempo real
+	
