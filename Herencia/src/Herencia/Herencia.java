@@ -9,5 +9,6 @@ public class Herencia {
         //crear instancia de clase ciudadano
         Ciudadano ciudadano = new Ciudadano();
         Alumno alumno = new Alumno();
+        
     }
 }
