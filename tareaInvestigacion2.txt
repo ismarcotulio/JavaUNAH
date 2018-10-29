@@ -1,0 +1,9 @@
+Investigar:
+
+1-Archivos de texto en Java
+	1.1-Crear,leer,abrir,escribir.
+
+2-Archivos binarios en Java
+	2.1-Crear,leer,abrir,escribir.
+
+3-Serializacion en Java
