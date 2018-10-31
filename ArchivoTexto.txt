@@ -1,0 +1,13 @@
+1-PrintWriter
+	
+	1.1-append(char c)
+		Anexa el carácter especificado a este escritor.
+		Una invocación de este método de la forma out.append (c) 
+		se comporta exactamente de la misma manera que la 
+		invocación.
+	1.2-
+
+
+Investigar instancias y metodos utiles para la creacion, edicion y 
+eliminacion de archivos de 
+texto 
