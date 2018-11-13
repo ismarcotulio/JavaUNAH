@@ -13,7 +13,7 @@ public class ContenedorVinculacion{
 		VinculacionContenedor[posicion]=null;
 	};
         
-	public void EnlistarVinculacion(){
+	public void ModificarVinculacion(){
 		System.out.println("");
 		for(int x=0;x<VinculacionContenedor.length;x++){
 			if(VinculacionContenedor[x]!=null){	
@@ -21,6 +21,14 @@ public class ContenedorVinculacion{
 			}
 		}
 	};
+         public int ComprobarIdentificadorVinculacion(int identificador){
+                        int error=1;
+			if(VinculacionContenedor[identificador]==null){	
+                            error=0;
+			}
+                        return error;
+        }
+
 
 }
 

@@ -21,7 +21,7 @@ public class ContenedorCiudad{
             }
         }; 
         
-	public void EnlistarCiudad(){
+	public void ModificarCiudad(){
 		System.out.println("");
 		for(int x=0;x<CiudadContenedor.length;x++){
 			if(CiudadContenedor[x]!=null){	
@@ -29,6 +29,13 @@ public class ContenedorCiudad{
 			}
 		}
 	};
+         public int ComprobarIdentificadorCiudad(int identificador){
+                        int error=1;
+			if(CiudadContenedor[identificador]==null){	
+                            error=0;
+			}
+                        return error;
+        }
 
 }
 

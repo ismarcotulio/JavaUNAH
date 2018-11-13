@@ -22,7 +22,7 @@ public class ContenedorPais{
             }
         }; 
         
-	public void EnlistarPais(){
+	public void ModificarPais(){
 		System.out.println("");
 		for(int x=0;x<PaisContenedor.length;x++){
 			if(PaisContenedor[x]!=null){	
@@ -30,6 +30,13 @@ public class ContenedorPais{
 			}
 		}
 	};
+        public int ComprobarIdentificadorPais(int identificador){
+                        int error=1;
+			if(PaisContenedor[identificador]==null){	
+                            error=0;
+			}
+                        return error;
+        }
 
 }
 
