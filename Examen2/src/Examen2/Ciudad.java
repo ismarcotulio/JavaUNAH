@@ -2,7 +2,7 @@
 package Examen2;
 
 
-public class Ciudad {
+public class Ciudad extends Pais{
    private int IdentificadorCiudad;
    private String NombreCiudad;
    private float AreaCiudad;

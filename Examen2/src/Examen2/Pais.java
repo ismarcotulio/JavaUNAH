@@ -2,7 +2,7 @@
 package Examen2;
 
 
-public class Pais {
+public class Pais  {
     private int IdentificadorPais;
     private String NombrePais;
     private String Continente;
