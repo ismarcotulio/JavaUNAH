@@ -1,14 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Examen2;
 
-/**
- *
- * @author usuario
- */
 public class Vinculacion {
+    private int IdentificadorVinculacion;
+    private int IdPais;
+    private int IdCiudad;
+
+    public Vinculacion() {
+    }
+
+    public Vinculacion(int IdentificadorVinculacion, int IdPais, int IdCiudad) {
+        this.IdentificadorVinculacion = IdentificadorVinculacion;
+        this.IdPais = IdPais;
+        this.IdCiudad = IdCiudad;
+    }
+
+    public int getIdentificadorVinculacion() {
+        return IdentificadorVinculacion;
+    }
+
+    public void setIdentificadorVinculacion(int IdentificadorVinculacion) {
+        this.IdentificadorVinculacion = IdentificadorVinculacion;
+    }
+
+    public int getIdPais() {
+        return IdPais;
+    }
+
+    public void setIdPais(int IdPais) {
+        this.IdPais = IdPais;
+    }
+
+    public int getIdCiudad() {
+        return IdCiudad;
+    }
+
+    public void setIdCiudad(int IdCiudad) {
+        this.IdCiudad = IdCiudad;
+    }
+    
     
 }
