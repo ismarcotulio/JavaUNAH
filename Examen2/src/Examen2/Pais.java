@@ -1,8 +1,10 @@
 
 package Examen2;
 
+import java.io.Serializable;
 
-public class Pais  {
+
+public class Pais implements Serializable  {
     private int IdentificadorPais;
     private String NombrePais;
     private String Continente;
@@ -49,8 +51,13 @@ public class Pais  {
     public void setAreaPais(float AreaPais) {
         this.AreaPais = AreaPais;
     }
-    
 
+    @Override
+    public String toString() {
+        return "Pais{" + "IdentificadorPais=" + IdentificadorPais + ", NombrePais=" + NombrePais + ", Continente=" + Continente + ", AreaPais=" + AreaPais + '}';
+    }
+    
+    
     
     
 }

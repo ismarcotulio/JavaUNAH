@@ -1,11 +1,37 @@
 
 package Examen2;
 
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[]args){
-       
+        try {
+            ObjectOutputStream escribirPais = new ObjectOutputStream(new FileOutputStream("ARCHIVO.BIN"));
+         
+            
+            escribirPais.close();
+            
+            ObjectInputStream leerPais = new ObjectInputStream(new FileInputStream("ARCHIVO.BIN"));
+            Pais mi_pais= (Pais) leerPais.readObject();
+            leerPais.close();
+            
+            //Imprimir y mostrar en pantalla el archivo desaerializado
+            System.out.println(mi_pais);
+        }catch(FileNotFoundException ex){
+            System.err.println("Error en la Apertura del Archivo...");
+        }catch (IOException ex) {
+            System.err.println("Error de Entrada/Salida...");
+        }catch (ClassNotFoundException ex){
+            System.err.println("La clase alumno no esta definida...");
+        }
                 int ciclo=1;
                 int identificador;
                 float area;
@@ -320,5 +346,6 @@ public class Main {
 		}
 	}
 }
+
     
 
