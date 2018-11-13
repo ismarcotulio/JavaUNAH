@@ -1,0 +1,102 @@
+-----------------------------------
+lista de comandos
+--------------------------------
+
+----------------
+herencia
+--------------
+
+1-extends
+2-super();
+
+---------------
+serializacion
+--------------------
+
+1-implements
+
+2-ObjectOutputStream
+		Un ObjectOutputStream escribe tipos de datos primitivos y gráficos de objetos Java en un OutputStream. Los objetos se pueden leer (reconstituir) utilizando un ObjectInputStream. El almacenamiento persistente de objetos se puede lograr mediante el uso de un archivo para la transmisión. Si el flujo es un flujo de socket de red, los objetos pueden reconstituirse en otro host o en otro proceso.
+		Solo los objetos que admiten la interfaz java.io.Serializable pueden escribirse en secuencias. La clase de cada objeto serializable se codifica, incluido el nombre de la clase y la firma de la clase, los valores de los campos y matrices del objeto y el cierre de cualquier otro objeto referenciado desde los objetos iniciales.
+
+		El método writeObject se utiliza para escribir un objeto en el flujo. Cualquier objeto, incluidas cadenas y matrices, se escribe con writeObject. Se pueden escribir múltiples objetos o primitivas en el flujo. Los objetos deben leerse desde el ObjectInputstream correspondiente con los mismos tipos y en el mismo orden en que fueron escritos.
+
+		Los tipos de datos primitivos también se pueden escribir en el flujo usando los métodos apropiados de DataOutput. Las cadenas también se pueden escribir usando el método writeUTF.
+
+		El mecanismo de serialización predeterminado para un objeto escribe la clase del objeto, la firma de la clase y los valores de todos los campos no transitorios y no estáticos. Las referencias a otros objetos (excepto en campos transitorios o estáticos) hacen que esos objetos se escriban también. Las múltiples referencias a un solo objeto se codifican utilizando un mecanismo de compartición de referencias para que los gráficos de objetos puedan restaurarse a la misma forma que cuando se escribió el original.
+
+		Por ejemplo, para escribir un objeto que pueda leerse con el ejemplo en ObjectInputStream:
+		      FileOutputStream fos = new FileOutputStream ("t.tmp");
+		      ObjectOutputStream oos = new ObjectOutputStream (fos);
+
+		      oos.writeInt (12345);
+		      oos.writeObject ("Today");
+		      oos.writeObject (new Date ());
+
+		      oos.close ();
+
+
+3-writeObject()
+
+4-FileOutputStream
+	Crea una secuencia de salida de archivo para escribir en el archivo representado por el objeto File especificado. Se crea un nuevo objeto FileDescriptor para representar esta conexión de archivo.
+	Primero, si hay un administrador de seguridad, su método checkWrite se llama con la ruta representada por el argumento del archivo como su argumento.
+
+	Si el archivo existe pero es un directorio en lugar de un archivo normal, no existe pero no se puede crear, o no se puede abrir por ninguna otra razón, se produce una excepción FileNotFoundException.
+
+	Parámetros:
+	archivo - el archivo que se abrirá para escribir.
+	Tiros
+	FileNotFoundException: si el archivo existe pero es un directorio en lugar de un archivo normal, no existe pero no puede crearse o no puede abrirse por ningún otro motivo
+	SecurityException: si existe un administrador de seguridad y su método checkWrite niega el acceso de escritura al archivo.
+
+5-ObjectInputStream
+	Un ObjectInputStream deserializa datos primitivos y objetos escritos previamente utilizando un ObjectOutputStream.
+	Advertencia: la deserialización de datos no confiables es intrínsecamente peligrosa y debe evitarse. Los datos que no sean de confianza deben validarse cuidadosamente de acuerdo con la sección "Serialización y deserialización" de las Pautas de codificación segura para Java SE. El filtrado de serialización describe las mejores prácticas para el uso defensivo de los filtros serie.
+
+	ObjectOutputStream y ObjectInputStream pueden proporcionar una aplicación con almacenamiento persistente para gráficos de objetos cuando se usan con FileOutputStream y FileInputStream respectivamente. ObjectInputStream se utiliza para recuperar los objetos previamente serializados. Otros usos incluyen pasar objetos entre hosts utilizando una secuencia de socket o para calcular y desalojar argumentos y parámetros en un sistema de comunicación remoto.
+
+	ObjectInputStream garantiza que los tipos de todos los objetos en el gráfico creado a partir de la secuencia coincidan con las clases presentes en la Máquina Virtual de Java. Las clases se cargan según sea necesario utilizando los mecanismos estándar.
+
+	Solo los objetos que admiten la interfaz java.io.Serializable o java.io.Externalizable pueden leerse desde secuencias.
+
+	El método readObject se utiliza para leer un objeto de la secuencia. El uso seguro de Java debe usarse para obtener el tipo deseado. En Java, las cadenas y matrices son objetos y se tratan como objetos durante la serialización. Cuando se leen, se deben convertir al tipo esperado.
+
+	Los tipos de datos primitivos se pueden leer del flujo usando el método apropiado en DataInput.
+
+	El mecanismo de deserialización predeterminado para objetos restaura el contenido de cada campo al valor y tipo que tenía cuando se escribió. Los campos declarados como transitorios o estáticos son ignorados por el proceso de deserialización. Las referencias a otros objetos hacen que esos objetos se lean de la secuencia según sea necesario. Los gráficos de objetos se restauran correctamente utilizando un mecanismo de compartición de referencias. Los nuevos objetos siempre se asignan al deserializar, lo que evita que los objetos existentes se sobrescriban.
+
+	Leer un objeto es análogo a ejecutar los constructores de un nuevo objeto. La memoria se asigna para el objeto y se inicializa a cero (NULL). Los constructores sin argumentos se invocan para las clases no serializables y luego los campos de las clases serializables se restauran desde el flujo, comenzando con la clase serializable más cercana a java.lang.object y terminando con la clase más específica del objeto.
+
+	Por ejemplo, para leer desde un flujo como está escrito en el ejemplo en ObjectOutputStream:
+	      FileInputStream fis = new FileInputStream ("t.tmp");
+	      ObjectInputStream ois = new ObjectInputStream (fis);
+
+	      int i = ois.readInt ();
+	      String today = (String) ois.readObject ();
+	      Fecha fecha = (Fecha) ois.readObject ();
+
+	      ois.close ();
+
+6-FileInputStream
+	Un FileInputStream obtiene bytes de entrada de un archivo en un sistema de archivos. Los archivos disponibles dependen del entorno del host.
+	FileInputStream está diseñado para leer flujos de bytes en bruto, como datos de imagen. Para leer secuencias de caracteres, considere usar FileReader.
+
+	Nota API:
+	Para liberar los recursos utilizados por esta secuencia, se debe llamar a close () directamente o con try-with-resources. Las subclases son responsables de la limpieza de los recursos adquiridos por la subclase. Las subclases que anulan finalize () para realizar la limpieza deben modificarse para usar mecanismos de limpieza alternativos como Limpiador y eliminar el método de finalización de anulación.
+	Requisitos de implementación:
+	Si este FileInputStream ha sido subclasificado y el método close () ha sido anulado, se llamará al método close () cuando no se pueda acceder a FileInputStream. De lo contrario, es una implementación específica de cómo se realiza la limpieza de recursos descrita en close ()
+
+7-readObject()
+	El objeto readObject () lanza la excepción ClassNotFoundException, IOException
+	Leer y devolver un objeto. La clase que implementa esta interfaz define desde dónde se "lee" el objeto.
+	Devoluciones:
+	el objeto leído de la corriente
+	Tiros
+	ClassNotFoundException: si no se puede encontrar la clase de un objeto serializado.
+	IOException: si se produce alguna de las excepciones habituales relacionadas con la entrada / salida
+	
+8-FileNotFoundException ex
+9-IOException ex
+10-ClassNotFoundException ex
+11-System.err.println
