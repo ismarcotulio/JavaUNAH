@@ -1,14 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Examen2;
 
-/**
- *
- * @author usuario
- */
+
 public class Ciudad {
-    
+   private int IdentificadorCiudad;
+   private String NombreCiudad;
+   private float AreaCiudad;
+
+    public Ciudad() {
+    }
+
+    public Ciudad(int IdentificadorCiudad, String NombreCiudad, float AreaCiudad) {
+        this.IdentificadorCiudad = IdentificadorCiudad;
+        this.NombreCiudad = NombreCiudad;
+        this.AreaCiudad = AreaCiudad;
+    }
+
+    public int getIdentificadorCiudad() {
+        return IdentificadorCiudad;
+    }
+
+    public void setIdentificadorCiudad(int IdentificadorCiudad) {
+        this.IdentificadorCiudad = IdentificadorCiudad;
+    }
+
+    public String getNombreCiudad() {
+        return NombreCiudad;
+    }
+
+    public void setNombreCiudad(String NombreCiudad) {
+        this.NombreCiudad = NombreCiudad;
+    }
+
+    public float getAreaCiudad() {
+        return AreaCiudad;
+    }
+
+    public void setAreaCiudad(float AreaCiudad) {
+        this.AreaCiudad = AreaCiudad;
+    }
+   
+   
+   
 }

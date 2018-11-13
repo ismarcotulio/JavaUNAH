@@ -3,35 +3,35 @@ package Examen2;
 
 
 public class Pais {
-    private int Identificador;
-    private String Nombre;
+    private int IdentificadorPais;
+    private String NombrePais;
     private String Continente;
-    private float AreaTerritorial ;
+    private float AreaPais ;
 
     public Pais() {
     }
 
-    public Pais(int Identificador, String Nombre, String Continente, float AreaTerritorial) {
-        this.Identificador = Identificador;
-        this.Nombre = Nombre;
+    public Pais(int IdentificadorPais, String NombrePais, String Continente, float AreaPais) {
+        this.IdentificadorPais = IdentificadorPais;
+        this.NombrePais = NombrePais;
         this.Continente = Continente;
-        this.AreaTerritorial = AreaTerritorial;
+        this.AreaPais = AreaPais;
     }
 
-    public int getIdentificador() {
-        return Identificador;
+    public int getIdentificadorPais() {
+        return IdentificadorPais;
     }
 
-    public void setIdentificador(int Identificador) {
-        this.Identificador = Identificador;
+    public void setIdentificadorPais(int IdentificadorPais) {
+        this.IdentificadorPais = IdentificadorPais;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public String getNombrePais() {
+        return NombrePais;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setNombrePais(String NombrePais) {
+        this.NombrePais = NombrePais;
     }
 
     public String getContinente() {
@@ -42,12 +42,14 @@ public class Pais {
         this.Continente = Continente;
     }
 
-    public float getAreaTerritorial() {
-        return AreaTerritorial;
+    public float getAreaPais() {
+        return AreaPais;
     }
 
-    public void setAreaTerritorial(float AreaTerritorial) {
-        this.AreaTerritorial = AreaTerritorial;
+    public void setAreaPais(float AreaPais) {
+        this.AreaPais = AreaPais;
     }
+
+    
     
 }
