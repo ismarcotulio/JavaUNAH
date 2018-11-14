@@ -5,9 +5,9 @@ import java.io.Serializable;
 
 public class ContenedorPais implements Serializable{
 
-	//Definiendo contenedor de clase Alumno
+	
 	public Pais PaisContenedor[] = new Pais[100];
-	//metodos de la clase contenedor 
+	 
 	public void AgregarPais(Pais pais,int posicion){
 		if(PaisContenedor[posicion]==null){
 			PaisContenedor[posicion]=pais;

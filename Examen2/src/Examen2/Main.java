@@ -21,7 +21,7 @@ public class Main {
                 
                 
 		
-		ContenedorVinculacion miContenedorVinculacion = new ContenedorVinculacion();
+		ContenedorVinculacion miContenedor = new ContenedorVinculacion();
                 ContenedorPais miContenedorPais = new ContenedorPais();
                 ContenedorCiudad miContenedorCiudad = new ContenedorCiudad();
                 try {
@@ -37,6 +37,8 @@ public class Main {
 
             //Leer el objeto en el stream
             miContenedorPais = (ContenedorPais) ois.readObject();
+            miContenedorCiudad = (ContenedorCiudad) ois.readObject();
+            miContenedor = (ContenedorVinculacion) ois.readObject();
 
             //Cerrar streams
             ois.close();
@@ -151,12 +153,53 @@ public class Main {
 					System.out.println("-----------------------------");
 					miContenedorPais.ModificarPais();
 				break;	
-                                
                                 case "2.1":
 					System.out.println("\n--------------------------------");
-					System.out.println("Eligio Agregar una Ciudad..");
+					System.out.println("Eligio Agregar Ciudad...");
 					System.out.println("--------------------------------");
 					Ciudad miCiudad = new Ciudad();
+                                        
+					while(error1==1){
+						System.out.print("Agregar una posicion entre 1-100: ");
+						posicion = leer.nextInt();
+						leer.reset();
+						
+						if(posicion<=100 && posicion>0){
+                                                    error1 = miContenedorCiudad.ComprobarIdentificadorCiudad(posicion);
+                                                        if(error1==0){
+                                                            
+                                                        miCiudad.setIdentificadorPais(posicion);
+                                                        
+							System.out.print("Agregar el nombre de la ciudad: ");
+							nombre = leer.next();
+                                                        miCiudad.setNombreCiudad(nombre);
+							leer.reset();
+                                                        System.out.print("Agregar el area de la ciudad: ");
+							area = leer.nextFloat();
+                                                        miCiudad.setAreaCiudad(area);
+							leer.reset();
+                                                        
+							miContenedorCiudad.AgregarCiudad(miCiudad, posicion);
+							System.out.println("Ciudad agregado exitosamente!\n");
+                                                        }else{
+                                                            System.out.println("Esa posicion ya esta ocupada...");
+                                                            System.out.println("Intentelo de nuevo...");
+                                                            System.out.println("");
+                                                        }
+                                                        
+						}else{
+							System.out.println("error!");
+							System.out.println("Posicion no disponible...");
+							System.out.println("intentelo de nuevo");
+						}
+					}
+					error1=1;
+				break;
+                                case "2.2":
+					System.out.println("\n--------------------------------");
+					System.out.println("Eligio Eliminar una Ciudad..");
+					System.out.println("--------------------------------");
+					
 					while(error1==1){
                                                 
                                                         System.out.print("Ingrese la posicion de la Ciudad entre 1-100: ");
@@ -167,11 +210,11 @@ public class Main {
                                                             error1 = miContenedorCiudad.ComprobarIdentificadorCiudad(posicion);
                                                             if(error1==1){
                                                                 miContenedorCiudad.EliminarCiudad(posicion);
-                                                                System.out.println("Pais eliminado exitosamente!");
+                                                                System.out.println("Ciudad eliminado exitosamente!");
                                                                 error1=0;
                                                             }else{
                                                                 System.out.println("Codigo invalido...");
-                                                                System.out.println("Pais no existe...");
+                                                                System.out.println("Ciudad no existe...");
                                                                 System.out.println("intentelo de nuevo...");
                                                                 error1=1;
                                                             }
@@ -205,7 +248,7 @@ public class Main {
 						leer.reset();
 						
 						if(posicion<=100 && posicion>0){
-                                                    error1 = miContenedorVinculacion.ComprobarIdentificadorVinculacion(posicion);
+                                                    error1 = miContenedor.ComprobarIdentificadorVinculacion(posicion);
                                                         if(error1==0){
                                                             
                                                             miVinculacion.setIdentificadorVinculacion(posicion);
@@ -213,18 +256,18 @@ public class Main {
                                                             
                                                             error1=1;
                                                             while(error1==1){
-                                                                System.out.println("Inserte Id del pais: ");
+                                                                System.out.print("Inserte Id del pais: ");
                                                                 identificador = leer.nextInt();
                                                                 error1 = miContenedorPais.ComprobarIdentificadorPais(identificador);
                                                                 if(error1==1){
                                                                     miVinculacion.setIdPais(identificador);
                                                                     while(error1==1){
-                                                                        System.out.println("Inserte Id de la Ciudad: ");
+                                                                        System.out.print("Inserte Id de la Ciudad: ");
                                                                         identificador = leer.nextInt();
                                                                         error1 = miContenedorCiudad.ComprobarIdentificadorCiudad(identificador);
                                                                         if(error1==1){
                                                                             miVinculacion.setIdCiudad(identificador);
-                                                                            miContenedorVinculacion.AgregarViculacion(miVinculacion, posicion);
+                                                                            miContenedor.AgregarVinculacion(miVinculacion, posicion);
                                                                             error1=0;
                                                                         }else{
                                                                             System.out.println("Ese id de ciudad no existe...");
@@ -241,18 +284,7 @@ public class Main {
                                                             
                                                             
                                                         
-                                                        //Que hay que hacer aqui en agregar vinculacion, ya que no podemos meter datos en este paso
-							/*System.out.print("Agregar el ");
-							nombre = leer.next();
-                                                        miVinculacion.setAgregarVinculacion(nombre);
-							leer.reset();*/
                                                         
-                                                        
-							/*System.out.print("");
-							miPais.Cuenta = leer.nextInt();
-							leer.reset();
-							miContenedor.AgregarAlumno(miAlumno,posicion);
-							error1=0;*/
 							System.out.println("Vinculacion agregada exitosamente!\n");
                                                         }else{
                                                             System.out.println("Esa posicion ya esta ocupada...");
@@ -269,26 +301,29 @@ public class Main {
 					error1=1;
 				break;
 				case "3.2":
-					System.out.println("\n------------------------------");
-					System.out.println("Eligio eliminar una vinculacion...");
-					System.out.println("------------------------------");
-                                        System.out.println("Como desea Eliminar?");
-                                                System.out.println("1-Nombre");
-                                                System.out.println("2-identificacion");
-                                                //System.out.println("3-Posicion");
-                                                desicion = leer.nextInt();
-                                                leer.reset();
-                                                if(desicion==2){
-                                                    while(error1==1){
+					System.out.println("\n--------------------------------");
+					System.out.println("Eligio Eliminar una Vinculacion..");
+					System.out.println("--------------------------------");
+					
+					while(error1==1){
                                                 
-                                                        System.out.print("Ingrese la posicion de la vinculacion entre 1-100: ");
+                                                        System.out.print("Ingrese la posicion de la Vinculacion entre 1-100: ");
                                                         posicion = leer.nextInt();
                                                         leer.reset();
 
                                                         if(posicion<=100 && posicion>0){
-                                                                miContenedorVinculacion.EliminarVinculacion(posicion);
-                                                                System.out.println("Vinculacion eliminada exitosamente!");
+                                                            error1 = miContenedor.ComprobarIdentificadorVinculacion(posicion);
+                                                            if(error1==1){
+                                                                miContenedor.EliminarVinculacion(posicion);
+                                                                System.out.println("Ciudad eliminado exitosamente!");
                                                                 error1=0;
+                                                            }else{
+                                                                System.out.println("Codigo invalido...");
+                                                                System.out.println("Vinculacion no existe...");
+                                                                System.out.println("intentelo de nuevo...");
+                                                                error1=1;
+                                                            }
+                                                                
                                                         }else{
                                                                 System.out.println("error!");
                                                                 System.out.println("Posicion no disponible...");
@@ -296,22 +331,14 @@ public class Main {
                                                         }
                                                     }
                                                     error1=1;
-                                                }else{
-                                                    while(error1==1){
-                                                        System.out.print("Ingrese la vinculacion: ");
-                                                        palabra = leer.nextLine();
-                                                        leer.reset();
-                                                        miContenedorPais.EliminarPais(palabra);
-                                                    }
-                                                    
-                                                }
+                                                
 					
 				break;
 				case "3.3":
 					System.out.println("\n-----------------------------");
 					System.out.println("Eligio modificar una vinculacion");
 					System.out.println("-----------------------------");
-					miContenedorVinculacion.ModificarVinculacion();
+					miContenedor.ModificarVinculacion();
 				break;
                                         
                                         
@@ -334,6 +361,8 @@ public class Main {
 
                                     //Escribir el objeto en el stream
                                     oos.writeObject( miContenedorPais );
+                                    oos.writeObject( miContenedorCiudad );
+                                    oos.writeObject( miContenedor );
 
                                     //Escritura correcta
                                     //response = true;

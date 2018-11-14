@@ -1,7 +1,9 @@
 
 package Examen2;
 
-public class Vinculacion {
+import java.io.Serializable;
+
+public class Vinculacion implements Serializable {
     private int IdentificadorVinculacion;
     private int IdPais;
     private int IdCiudad;

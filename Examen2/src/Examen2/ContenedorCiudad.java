@@ -1,5 +1,8 @@
 package Examen2;
-public class ContenedorCiudad{
+
+import java.io.Serializable;
+
+public class ContenedorCiudad implements Serializable{
 
 	//Definiendo contenedor de clase Alumno
 	public Ciudad CiudadContenedor[] = new Ciudad[100];

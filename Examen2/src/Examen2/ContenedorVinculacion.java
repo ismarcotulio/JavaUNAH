@@ -1,10 +1,13 @@
 package Examen2;
-public class ContenedorVinculacion{
+
+import java.io.Serializable;
+
+public class ContenedorVinculacion implements Serializable{
 
 	//Definiendo contenedor de clase Alumno
 	public Vinculacion VinculacionContenedor[] = new Vinculacion[100];
 	//metodos de la clase contenedor 
-	public void AgregarViculacion(Vinculacion vinculacion,int posicion){
+	public void AgregarVinculacion(Vinculacion vinculacion,int posicion){
 		if(VinculacionContenedor[posicion]==null){
 			VinculacionContenedor[posicion]=vinculacion;
 		}
