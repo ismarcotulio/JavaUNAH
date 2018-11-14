@@ -1,10 +1,9 @@
 
 package Examen2;
 
-import java.io.Serializable;
 
 
-public class Pais implements Serializable  {
+public class Pais  {
     private int IdentificadorPais;
     private String NombrePais;
     private String Continente;

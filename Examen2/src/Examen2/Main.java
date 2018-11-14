@@ -29,26 +29,7 @@ public class Main {
 		ContenedorVinculacion miContenedorVinculacion = new ContenedorVinculacion();
                 ContenedorPais miContenedorPais = new ContenedorPais();
                 ContenedorCiudad miContenedorCiudad = new ContenedorCiudad();
-                
-                try {
-                    ObjectOutputStream escribirPais = new ObjectOutputStream(new FileOutputStream("ARCHIVO.BIN"));
-
-
-                    escribirPais.close();
-
-                    ObjectInputStream leerPais = new ObjectInputStream(new FileInputStream("ARCHIVO.BIN"));
-                    Pais mi_pais= (Pais) leerPais.readObject();
-                    leerPais.close();
-
-                    //Imprimir y mostrar en pantalla el archivo desaerializado
-                    System.out.println(mi_pais);
-                }catch(FileNotFoundException ex){
-                    System.err.println("Error en la Apertura del Archivo...");
-                }catch (IOException ex) {
-                    System.err.println("Error de Entrada/Salida...");
-                }catch (ClassNotFoundException ex){
-                    System.err.println("La clase alumno no esta definida...");
-                }
+                                
 		Scanner leer = new Scanner(System.in);
 		while(ciclo==1){
 			System.out.println("\n------------------------------------------------------------------------------------------------------------------------");
@@ -321,7 +302,27 @@ public class Main {
 					System.out.println("Gracias por utilizar nuestro servicio");
 					ciclo=0;
                                         
-                                        
+                                    try {
+                                        ObjectOutputStream escribirPais = new ObjectOutputStream(new FileOutputStream("PAIS.BIN"));
+                                        escribirPais.writeObject(new ContenedorPais());
+                                        escribirPais.close(); 
+
+
+                                        escribirPais.close();
+
+                                        ObjectInputStream leerPais = new ObjectInputStream(new FileInputStream("PAIS.BIN"));
+                                        Pais mi_pais= (Pais) leerPais.readObject();
+                                        leerPais.close();
+
+                                        //Imprimir y mostrar en pantalla el archivo desaerializado
+                                        System.out.println(mi_pais);
+                                    }catch(FileNotFoundException ex){
+                                        System.err.println("Error en la Apertura del Archivo...");
+                                    }catch (IOException ex) {
+                                        System.err.println("Error de Entrada/Salida...");
+                                    }catch (ClassNotFoundException ex){
+                                        System.err.println("La clase alumno no esta definida...");
+                                    }    
 				break;
 				default:
 					System.out.println("Error!");

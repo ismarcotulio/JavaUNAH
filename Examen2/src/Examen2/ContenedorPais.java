@@ -1,6 +1,7 @@
 
 package Examen2;
-public class ContenedorPais{
+import java.io.Serializable;
+public class ContenedorPais implements Serializable{
 
 	//Definiendo contenedor de clase Alumno
 	public Pais PaisContenedor[] = new Pais[100];
