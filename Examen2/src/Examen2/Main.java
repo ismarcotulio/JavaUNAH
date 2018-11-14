@@ -1,12 +1,7 @@
 
 package Examen2;
 
-import java.io.FileOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,26 +24,32 @@ public class Main {
 		ContenedorVinculacion miContenedorVinculacion = new ContenedorVinculacion();
                 ContenedorPais miContenedorPais = new ContenedorPais();
                 ContenedorCiudad miContenedorCiudad = new ContenedorCiudad();
-                
                 try {
-                    ObjectOutputStream escribirPais = new ObjectOutputStream(new FileOutputStream("ARCHIVO.BIN"));
+            //Abrir fichero
+            File f = new File("archivo.txt");
+
+            //Crear stream de lectura para el fichero
+            FileInputStream fis = new FileInputStream( f );
+
+            //Crear stream para leer el objeto
+            ObjectInputStream ois = new ObjectInputStream( fis );
 
 
-                    escribirPais.close();
+            //Leer el objeto en el stream
+            miContenedorPais = (ContenedorPais) ois.readObject();
 
-                    ObjectInputStream leerPais = new ObjectInputStream(new FileInputStream("ARCHIVO.BIN"));
-                    Pais mi_pais= (Pais) leerPais.readObject();
-                    leerPais.close();
+            //Cerrar streams
+            ois.close();
+            fis.close();
 
-                    //Imprimir y mostrar en pantalla el archivo desaerializado
-                    System.out.println(mi_pais);
-                }catch(FileNotFoundException ex){
-                    System.err.println("Error en la Apertura del Archivo...");
-                }catch (IOException ex) {
-                    System.err.println("Error de Entrada/Salida...");
-                }catch (ClassNotFoundException ex){
-                    System.err.println("La clase alumno no esta definida...");
-                }
+        } catch ( IOException | ClassNotFoundException ioe ) {
+            System.err.println(
+                "ERR -> Sending object. \n" + ioe.toString( ));
+        }
+                
+                
+                
+                
 		Scanner leer = new Scanner(System.in);
 		while(ciclo==1){
 			System.out.println("\n------------------------------------------------------------------------------------------------------------------------");
@@ -320,6 +321,31 @@ public class Main {
 					System.out.println("-----------------");
 					System.out.println("Gracias por utilizar nuestro servicio");
 					ciclo=0;
+                                        try {
+                                    //Abrir fichero
+                                    File f = new File("archivo.txt");
+
+                                    //Crear stream de escritura para el fichero
+                                    FileOutputStream fos = new FileOutputStream( f );
+
+                                    //Crear stream para escribir el objeto
+                                    ObjectOutputStream oos = new ObjectOutputStream( fos );
+
+
+                                    //Escribir el objeto en el stream
+                                    oos.writeObject( miContenedorPais );
+
+                                    //Escritura correcta
+                                    //response = true;
+
+                                    //Cerrar streams
+                                    oos.close();
+                                    fos.close();
+
+                                } catch ( IOException ioe ) {
+                                    System.err.println(
+                                        "ERR -> Sending object. \n" + ioe.toString( ));
+                                }
                                         
                                         
 				break;
