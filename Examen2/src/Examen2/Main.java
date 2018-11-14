@@ -13,25 +13,7 @@ import java.util.logging.Logger;
 
 public class Main {
     public static void main(String[]args){
-        try {
-            ObjectOutputStream escribirPais = new ObjectOutputStream(new FileOutputStream("ARCHIVO.BIN"));
-         
-            
-            escribirPais.close();
-            
-            ObjectInputStream leerPais = new ObjectInputStream(new FileInputStream("ARCHIVO.BIN"));
-            Pais mi_pais= (Pais) leerPais.readObject();
-            leerPais.close();
-            
-            //Imprimir y mostrar en pantalla el archivo desaerializado
-            System.out.println(mi_pais);
-        }catch(FileNotFoundException ex){
-            System.err.println("Error en la Apertura del Archivo...");
-        }catch (IOException ex) {
-            System.err.println("Error de Entrada/Salida...");
-        }catch (ClassNotFoundException ex){
-            System.err.println("La clase alumno no esta definida...");
-        }
+        
                 int ciclo=1;
                 int identificador;
                 float area;
@@ -42,10 +24,31 @@ public class Main {
 		int error1=1;
                 String palabra;
                 
+                
 		
 		ContenedorVinculacion miContenedorVinculacion = new ContenedorVinculacion();
                 ContenedorPais miContenedorPais = new ContenedorPais();
                 ContenedorCiudad miContenedorCiudad = new ContenedorCiudad();
+                
+                try {
+                    ObjectOutputStream escribirPais = new ObjectOutputStream(new FileOutputStream("ARCHIVO.BIN"));
+
+
+                    escribirPais.close();
+
+                    ObjectInputStream leerPais = new ObjectInputStream(new FileInputStream("ARCHIVO.BIN"));
+                    Pais mi_pais= (Pais) leerPais.readObject();
+                    leerPais.close();
+
+                    //Imprimir y mostrar en pantalla el archivo desaerializado
+                    System.out.println(mi_pais);
+                }catch(FileNotFoundException ex){
+                    System.err.println("Error en la Apertura del Archivo...");
+                }catch (IOException ex) {
+                    System.err.println("Error de Entrada/Salida...");
+                }catch (ClassNotFoundException ex){
+                    System.err.println("La clase alumno no esta definida...");
+                }
 		Scanner leer = new Scanner(System.in);
 		while(ciclo==1){
 			System.out.println("\n------------------------------------------------------------------------------------------------------------------------");
