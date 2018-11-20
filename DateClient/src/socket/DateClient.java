@@ -1,6 +1,6 @@
 
 package socket;
-
+import java.io.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +19,9 @@ public class DateClient {
         String answer =input.readLine();
         JOptionPane.showMessageDialog(null, answer);
         System.exit(0);
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+      bufferedWriter.write("Error: no se ha encontrado o cargado la clase principal dateserver.DateServer");
+      bufferedWriter.flush();
         
     }   
 }
