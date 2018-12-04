@@ -47,7 +47,14 @@ public class SocketHTML {
                     }
                 } catch (FileNotFoundException e) {
                   File archivo = new File("error404.html");
-                FileReader leer = new FileReader(archivo);
+                    out.write("HTTP/1.1 200 OK\r\n");
+                    out.write("Content-Type: text/html\r\n");
+
+                    entrada = new Scanner(new FileReader(archivo));
+
+                    while (entrada.hasNext()) {
+                        out.println(entrada.nextLine());
+                    }
                 } finally {
                     //entrada.close();
                     socket.close();
