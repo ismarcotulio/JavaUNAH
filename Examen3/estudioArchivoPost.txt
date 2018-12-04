@@ -1,0 +1,28 @@
+--------------------------
+librerias
+----------------------
+
+1-io.BufferedReader
+2-io.BufferedWriter
+3-io.File
+4-io.FileReader
+5-util.arrays
+6-util.date
+7-util.hashmap
+8-util.map.Entry
+
+----------------------------
+comandos nuevos
+---------------------------
+
+1-Socket clientSocket = serverSocket.accept();
+2-readLine();
+3-String.startsWith();
+4-Integer.parseInt(line.substring("Content-Length: ".length()));
+5-StringBuilder();
+6-HashMap<String, String> $_POST = new HashMap();
+7-StringBuilder.append((char) in.read());
+8-StringBuilder.toString().split("&");
+9-$_POST.put(param[0], param[1]);
+10-Entry<String, String> input : $_POST.entrySet()
+11-
