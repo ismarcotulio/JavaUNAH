@@ -17,7 +17,7 @@ public class SocketHTML {
 
     public static void main(String[] args) throws IOException {
          System.out.println("Inicializando Servidor de Tiempo");
-        ServerSocket listener = new ServerSocket(9090);
+        ServerSocket listener = new ServerSocket(9292);
         PrintWriter out = null;
         try {
             while (true) {
