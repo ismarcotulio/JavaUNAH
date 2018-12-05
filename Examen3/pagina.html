@@ -62,17 +62,17 @@
 			<div class="col-12" style="">
 				<div  style="width: 50%; height:100%; background-color: #E3CEF6; position:relative; float:left; padding:3%;">
 					<h1 style="color:;">Informacion de Alumno</h1>
-					<form class="infoAlumno">
+					<form  method="POST" >
 					  <div class="form-group">
 					    <label for="NombreAlumno">Nombre:</label>
-					    <input type="text" class="form-control" id="NombreAlumno" placeholder="Ingrese un nombre">
-					    <label for="NombreAlumno">Apellido:</label>
-					    <input type="text" class="form-control" id="NombreAlumno" placeholder="Ingrese un apellido">
-					    <label for="NombreAlumno">Universidad:</label>
-					    <input type="text" class="form-control" id="NombreAlumno" placeholder="Ingrese una universidad">
-					    <label for="NombreAlumno">Carrera:</label>
-					    <input type="text" class="form-control" id="NombreAlumno" placeholder="Ingrese una carrera">
-					    <input class="btn btn-success" type="submit" name="Enviar" style="margin-top:3%;">
+					    <input type="text" class="form-control" name="NombreAlumno" id="NombreAlumno" placeholder="Ingrese un nombre">
+					    <label for="apellidoAlumno">Apellido:</label>
+					    <input type="text" class="form-control" name="apellidoAlumno" id="apellidoAlumno" placeholder="Ingrese un apellido">
+					    <label for="Universidad">Universidad:</label>
+					    <input type="text" class="form-control" name="Universidad" id="Universidad" placeholder="Ingrese una universidad">
+					    <label for="Carrera">Carrera:</label>
+					    <input type="text" class="form-control" name="Carrera" id="Carrera" placeholder="Ingrese una carrera">
+					    <input class="btn btn-success" type="submit"  style="margin-top:3%;">
 					  </div>
 					</form>
 					
